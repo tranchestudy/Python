@@ -13,8 +13,13 @@ program을 쉽게 만들 수 있게 함.
 간략 기능 소개
 ------------
 
-필수 arguments와 options을 정의하면, argparse는 sys.argv에서 이를
-어떻게 파싱해줌. help와 사용메시지등도 자동으로 생성해 주고 잘못된
+필수 arguments와 options을 정의하면, argparse는 sys.argv에서 넘겨 받은
+인자를 파싱해줌. help와 사용메시지등도 자동으로 생성해 주고 잘못된
 arguments를 주는 경우 에러메시지도 생성을 해줌.
 
 
+
+References
+----------
+
+* [Python Standard Library](http://docs.python.org/3.4/library/argparse.html)
