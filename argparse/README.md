@@ -37,6 +37,26 @@ help='an integer for the accumulator')
 >>> parser.parse_args(['--sum', '7', '-1', '42'])  # 인자로 받은 list를 파싱함
 ~~~
 
+add_argument() method
+------------------------------------
+
+```python3
+ArgumentParser.add_argument(name or flags...[,action][,nargs][,const][,default][,type][,choices][,required][,help][,metavar][,dest])
+```
+
+* name or flags: option string의 이름 또는 목록. e.g. foo or -f, --foo
+* action: command line에서 지정된 argument에 대한 action 지정
+* nargs: 지정된 option string에서 사용할 command line argument 수. option string에 하나 이상의 값을 사용할 때 사용.
+* const: 일부 action이나 nargs에서 요구되는 constant value
+* default: command lin에서 argument가 생략되었을 때 사용되는 기본 값
+* type: command line argument 변환되야 하는 type
+* choices: argument에 사용될 값 목록
+* required: command line에서 생략될 수 있는지 여부 (optional argument인 경우에만 사용)
+* help: argument에 대한 간단한 설명
+* metavar: usage message의 argument 이름
+* dest: parse_args()로 생성된 객체에 추가될 attribute 이름.
+
+
 References
 ----------
 
