@@ -80,16 +80,63 @@ attribute를 추가등을 함.
 >>> parser.parse_args('--foo 10'.split())
 Namespace(foo='10')
 ~~~
-* 'store_const' - const keyword argument에 지정된 값을 저장함.
-* 'store_true' or 'store_false'
-* 'append'
-* 'append_const'
-* 'count'
-* 'help'
-* 'version'
+
+* 'store_const' - const keyword argument에 지정된 값을 저장함. flag성 optional 
+argument를 지정하기 위해 사용
+~~~python3
+>>> parser.add_argument('--foo', action='store_const', const=42)
+>>> parser.parse_args('--foo'.split())
+>>> Namespace(foo=42)
+~~~
+
+* 'store_true' or 'store_false' - const keyword argument 값이 True나
+False로 지정된 특화된 'store_const'.
+~~~python3
+>>> parser.add_argument('--foo', action='store_true')
+>>> parser.add_argument('--bar', action='store_false')
+>>> parser.parse_args('--foo --bar'.split())
+Namespace(bar=False, foo=True)
+>>> parser.parse_args([])
+Namespace(bar=True, foo=False)
+~~~
+
+* 'append' - argument value를 list로 저장. option이 command line에 여러 번 
+지정될 수 있을 때 사용
+~~~python3
+>>> parser.add_argument('--foo', action='append')
+>>> parser.parse_args('--foo 1 --foo 2'.split())
+Namespace(foo=['1', '2'])
+~~~
+
+* 'append_const' - const keyword argument에 지정된 값을 list로 저장. option이
+command line에서 여러 번 지정되는 option에 대해 상수를 동일한 list에 저장하기 위해
+사용
+~~~python3
+>>> parser.add_argument('--str', dest='types', action='append_const', const=str)
+>>> parser.add_argument('--int', dest='types', action='append_const', const=int)
+>>> parser.parse_args('--str --int'.split())
+Namespace(types=[<class 'str'>, <class 'int'>])
+~~~
+
+* 'count' - 지정된 argument가 나타난 수를 저장. verbosity level을 지정하는데 유용
+~~~python3
+>>> parser.add_argument('--verbose', '-v', action='count')
+>>> parser.parse_args('-vvv'.split())
+Namespace(verbose=3)
+~~~
+
+* 'help' - 모든 option에 대한 help message를 프린트하도록 함. 기본적으로 지정되어 있음.
+
+* 'version' - version 정보를 프린트하도록 함. version keyword argument 사용
+~~~python3
+>>> parser = argparse.ArgumentParser(prog='PROG')
+>>> parser.add_argument('--version', action='version', version='%(prog)s 2.0')
+>>> parser.parse_args('--version'.split())
+PROG 2.0
+~~~
 
 #### 2.1 사용자 정의 action
-
+TBD
 
 ### 3. nargs
 
