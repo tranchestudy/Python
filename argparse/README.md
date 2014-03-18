@@ -61,12 +61,13 @@ ArgumentParser.add_argument(name or flags...[,action][,nargs][,const][,default][
 command line의 argument가 optional argument인지 positional argument인지 지정.
 * optional argument: -f나 --foo 형태
 * positional argument: filename 등의 argument
-   ~~~python3
-   >>> parser.add_argument('-f', '--foo')
-   >>> parser.add_argument('bar')
-   >>> parser.parse_args(['BAR'])
-   >>> parser.parse_args(['BAR', '--foo', 'FOO'])
-   ~~~
+
+~~~python3
+>>> parser.add_argument('-f', '--foo')
+>>> parser.add_argument('bar')
+>>> parser.parse_args(['BAR'])
+>>> parser.parse_args(['BAR', '--foo', 'FOO'])
+~~~
 
 ### 2. action
 
