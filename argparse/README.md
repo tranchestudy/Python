@@ -117,6 +117,12 @@ command line에서 여러 번 지정되는 option에 대해 상수를 동일한 
 >>> parser.parse_args('--str --int'.split())
 Namespace(types=[<class 'str'>, <class 'int'>])
 ~~~
+~~~python3
+>>> parser.add_argument('--str', action='append_const', const=str)
+>>> parser.add_argument('--int', action='append_const', const=int)
+>>> parser.parse_args('--str --str --int'.split())
+Namespace(int=[<class 'int'>], str=[<class 'str'>, <class 'str'>])
+~~~
 
 * 'count' - 지정된 argument가 나타난 수를 저장. verbosity level을 지정하는데 유용
 ~~~python3
@@ -140,6 +146,24 @@ TBD
 
 ### 3. nargs
 
+nargs keyword argument는 하나 이상의 command line argument가 한 action과 연관지음.
+
+* N (an integer) - command line에서 N 개의 arguments가 list로 수집됨.
+~~~python3
+>>> parser.add_argument('--foo', nargs=2)
+>>> parser.add_argument('bar', nargs=1)
+>>> parser.parse_args('c --foo a b'.split())
+Namespace(bar=['c'], foo=['a', 'b']
+~~~
+  *nargs=1* 로 지정된 bar의 값도 list로 저장됨
+
+* '?'
+
+* '*'
+
+* '+'
+
+* argparse.REMAINDER
 
 ### 4. const
 
