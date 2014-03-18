@@ -38,7 +38,7 @@ help='an integer for the accumulator')
 ~~~
 
 add_argument() method
-------------------------------------
+-----------------------
 
 ```python3
 ArgumentParser.add_argument(name or flags...[,action][,nargs][,const][,default][,type][,choices][,required][,help][,metavar][,dest])
@@ -58,6 +58,64 @@ ArgumentParser.add_argument(name or flags...[,action][,nargs][,const][,default][
 
 ### 1. name or flags
 
+command line의 argument가 optional argument인지 positional argument인지 지정.
+* optional argument: -f나 --foo 형태
+* positional argument: filename 등의 argument
+
+~~~python3
+>>> parser.add_argument('-f', '--foo')
+>>> parser.add_argument('bar')
+>>> parser.parse_args(['BAR'])
+>>> parser.parse_args(['BAR', '--foo', 'FOO'])
+~~~
+
+### 2. action
+
+add_argument로 추가된 command argument에 대한 action 정의. parse_args()로 반환된 개체에
+attribute를 추가등을 함.
+
+* 'store' - argument 값을 저장함. default action
+~~~python3
+>>> parser.add_argument('--foo')
+>>> parser.parse_args('--foo 10'.split())
+Namespace(foo='10')
+~~~
+* 'store_const' - const keyword argument에 지정된 값을 저장함.
+* 'store_true' or 'store_false'
+* 'append'
+* 'append_const'
+* 'count'
+* 'help'
+* 'version'
+
+#### 2.1 사용자 정의 action
+
+
+### 3. nargs
+
+
+### 4. const
+
+
+### 5. default
+
+
+### 6. type
+
+
+### 7. choices
+
+
+### 8. required
+
+
+### 9. help
+
+
+### 10. metavar
+
+
+### 11. dest
 
 References
 ----------
