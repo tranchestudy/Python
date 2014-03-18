@@ -149,13 +149,13 @@ TBD
 nargs keyword argument는 하나 이상의 command line argument가 한 action과 연관지음.
 
 * N (an integer) - command line에서 N 개의 arguments가 list로 수집됨.
-~~~python3
->>> parser.add_argument('--foo', nargs=2)
->>> parser.add_argument('bar', nargs=1)
->>> parser.parse_args('c --foo a b'.split())
-Namespace(bar=['c'], foo=['a', 'b']
-~~~
-  *nargs=1* 로 지정된 bar의 값도 list로 저장됨
+   ~~~python3
+   >>> parser.add_argument('--foo', nargs=2)
+   >>> parser.add_argument('bar', nargs=1)
+   >>> parser.parse_args('c --foo a b'.split())
+   Namespace(bar=['c'], foo=['a', 'b'])
+   ~~~
+   **nargs=1** 로 지정된 bar의 값도 list로 저장됨
 
 * '?'
 
