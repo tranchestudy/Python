@@ -56,6 +56,8 @@ ArgumentParser.add_argument(name or flags...[,action][,nargs][,const][,default][
 * metavar: usage message의 argument 이름
 * dest: parse_args()로 생성된 객체에 추가될 attribute 이름.
 
+### 1. name or flags
+
 
 References
 ----------
